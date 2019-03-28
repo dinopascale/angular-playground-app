@@ -1,0 +1,104 @@
+//need to be here because when element is dragged it jumps to the top of DOM tree
+
+.__user-recap {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    margin-bottom: 8px;
+    display: flex;
+
+
+    &::active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+
+        .__avatar {
+            max-width: 75px;
+        }
+    }
+
+    .__avatar {
+        width: 100%;
+        max-width: 75px;
+    }
+
+}
+
+.dd-container {
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+    padding: 0 64px;
+
+    .cdk-drag-preview {
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+        width: 50px;
+        border: 4px solid red;
+    }
+
+    .cdk-drop-list-dragging .cdk-drag {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+      
+      /* Animate an item that has been dropped. */
+    .cdk-drag-animating {
+       transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .__droppable, .__draggable {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+    }
+
+    .__droppable {
+        overflow-y: auto;
+
+        .__title {
+            font-weight: bold;
+            text-align: center;
+            flex: 0 0 auto !important;
+        }
+
+        .__alloggio {
+            margin-bottom: 8px;
+            padding: 12px;
+            border-bottom: 3px dashed rgba(0,0,0,.2);
+
+            &:nth-last-of-type() {
+                border: none;
+            }
+
+            .__label {
+                flex: 0 0 100% !important;
+            }
+
+            .__list-users {
+                width: 100%;
+                min-height: 50px;
+                padding: 10px 0;
+            }
+
+            .__user-recap {
+                margin-bottom: 2px;
+            }
+        }
+    }
+
+    .__draggable {
+
+        min-height: 60%;
+
+        .__title {
+            font-weight: bold;
+            text-align: center;
+            flex: 0 0 100% !important;
+        }
+    }
+}

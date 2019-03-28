@@ -1,0 +1,38 @@
+<div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center" class="dd-container" cdkDropListGroup>
+  
+  <div fxFlex="60" class="__droppable mat-elevation-z2" fxLayout="column" >
+    <div fxFlex="100" class="mat-h1 __title">Alloggi</div>
+    <div class="__alloggio" *ngFor="let alloggio of alloggi" fxFlex="100" fxLayout="column"  fxLayoutAlign="start start">
+      <div class="__label" fxFlex="100">
+        {{alloggio.name.toUpperCase()}} ({{alloggio.price }} €)
+      </div>
+      <div class="__list-users" fxLayout="row wrap" fxFlex="100" cdkDropList [cdkDropListData]="alloggio.users" (cdkDropListDropped)="drop($event)" >
+        <div class="__user-recap " cdkDrag fxFlex="50" *ngFor="let user of alloggio.users" fxLayoutAlign="center center">
+            <div class="__image" fxFlex="30">
+                <img class="__avatar" [src]="user.avatar">
+              </div>
+              <div fxFlex="60">
+                <div class="__name">{{user.name}}</div>
+                <div class="__surname">{{user.surname}}</div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div fxFlex="30" class="__draggable mat-elevation-z2" fxLayout="column">
+    <div fxFlex="100" class="mat-h1 __title">Users</div>
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start start" (cdkDropListDropped)="drop($event)"  cdkDropList [cdkDropListData]="users">
+      <div class="__user-recap" cdkDrag *ngFor="let user of users" fxFlex="100" fxLayoutAlign="center center">
+        <div class="__image" fxFlex="30">
+          <img class="__avatar" [src]="user.avatar">
+        </div>
+        <div fxFlex="60">
+          <div class="__name">{{user.name}}</div>
+          <div class="__surname">{{user.surname}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

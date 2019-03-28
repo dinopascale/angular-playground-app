@@ -1,0 +1,8 @@
+<div *ngFor="let item of items" (deferLoad)="item.visible = true">
+  <ng-container *ngIf="item.visible; else placeholder">
+    <app-lazy-load-item  [data]="item"></app-lazy-load-item>
+  </ng-container>
+  <ng-template #placeholder>
+    <div class="placeholder"></div>
+  </ng-template>
+</div>

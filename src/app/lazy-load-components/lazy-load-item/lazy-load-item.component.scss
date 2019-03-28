@@ -1,0 +1,15 @@
+.item {
+    min-height:110vh;
+
+    &.blue {
+        background-color: teal;
+    }
+
+    &.green {
+        background-color: greenyellow
+    }
+
+    &.cyan {
+        background-color: cyan;
+    }
+}
